@@ -1,0 +1,70 @@
+from weapons.weapons_enum import Weapons
+
+def get_ammo(weapon):
+    match weapon:
+        case Weapons.AKM:
+            return 34
+        case Weapons.CB_01_REPEATER:
+            return 8
+        case Weapons.CERBERUS_12GA:
+            return 3
+        case Weapons.CHIMERA_XB:
+            return 15
+        case Weapons.CL_40:
+            return 5
+        case Weapons.FAMAS:
+            return 27
+        case Weapons.FCAR:
+            return 25
+        case Weapons.MODEL_1887:
+            return 7
+        case Weapons.P90:
+            return 50
+        case Weapons.PIKE_556:
+            return 12
+        case Weapons.R_357:
+            return 6
+        case Weapons._50_AKIMBO:
+            return 14
+        case Weapons.BFR_TITAN:
+            return 5
+        case Weapons.FLAMETHROWER:
+            return 30
+        case Weapons.KS_23:
+            return 6
+        case Weapons.LEWIS_GUN:
+            return 47
+        case Weapons.M134_MINIGUN:
+            return 300
+        case Weapons.M60:
+            return 70
+        case Weapons.MGL32:
+            return 6
+        case Weapons.SA1216:
+            return 16
+        case Weapons.SHAK_50:
+            return 20
+        case Weapons._93R:
+            return 24
+        case Weapons.ARN_220:
+            return 60
+        case Weapons.LH1:
+            return 15
+        case Weapons.M11:
+            return 40
+        case Weapons.M26_MATTER:
+            return 8
+        case Weapons.RECURVE_BOW:
+            return 1 # Infinite ammo, but I'll give it a "fake" ammo count of 1 for the sake of not having to reload
+        case Weapons.SH1900:
+            return 2
+        case Weapons.SR_84:
+            return 6
+        case Weapons.THROWING_KNIVES:
+            return 1 # Infinite ammo, but I'll give it a "fake" ammo count of 1 for the sake of not having to reload
+        case Weapons.V9S:
+            return 20
+        case Weapons.XP_54:
+            return 34
+        case _:
+            raise ValueError("Invalid weapon provided to get_ammo")

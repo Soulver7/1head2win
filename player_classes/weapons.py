@@ -60,8 +60,6 @@ def get_ammo(weapon):
             return 15
         case Weapons.CL_40:
             return 5
-        case Weapons.DUAL_BLADES:
-            return 1 # Melee weapon, but I'll give it a "fake" ammo count of 1 for the sake of not having to reload
         case Weapons.FAMAS:
             return 27
         case Weapons.FCAR:
@@ -74,8 +72,6 @@ def get_ammo(weapon):
             return 12
         case Weapons.R_357:
             return 6
-        case Weapons.RIOT_SHIELD:
-            return 1 # Melee weapon, but I'll give it a "fake" ammo count of 1 for the sake of not having to reload
         case Weapons._50_AKIMBO:
             return 14
         case Weapons.BFR_TITAN:
@@ -96,16 +92,10 @@ def get_ammo(weapon):
             return 16
         case Weapons.SHAK_50:
             return 20
-        case Weapons.SLEDGEHAMMER:
-            return 1 # Melee weapon, but I'll give it a "fake" ammo count of 1 for the sake of not having to reload
-        case Weapons.SPEAR:
-            return 1 # Melee weapon, but I'll give it a "fake" ammo count of 1 for the sake of not having to reload
         case Weapons._93R:
             return 24
         case Weapons.ARN_220:
             return 60
-        case Weapons.DAGGER:
-            return 1 # Melee weapon, but I'll give it a "fake" ammo count of 1 for the sake of not having to reload
         case Weapons.LH1:
             return 15
         case Weapons.M11:
@@ -118,8 +108,6 @@ def get_ammo(weapon):
             return 2
         case Weapons.SR_84:
             return 6
-        case Weapons.SWORD:
-            return 1 # Melee weapon, but I'll give it a "fake" ammo count of 1 for the sake of not having to reload
         case Weapons.THROWING_KNIVES:
             return 1 # Infinite ammo, but I'll give it a "fake" ammo count of 1 for the sake of not having to reload
         case Weapons.V9S:

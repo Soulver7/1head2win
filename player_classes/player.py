@@ -1,8 +1,9 @@
 import random
 from weapons import Weapons, get_ammo
 from ranks import Ranks, init_evasion_calc
+from weapons.shoot_dmg_calc import shoot_dmg_calc
 
-class Player:
+class Player: # Make function that uses input() to take weapon choice # Remember time.sleep() as well for turn simulation
     def __init__(self, name, rank):
         self.name = name
         self.rank = rank # I could make this an enum to ensure it's validity
@@ -24,12 +25,11 @@ class Medium(Player):
     def __init__(self, name, rank, weapon):
         super().__init__(name, rank)
         self.health = 250
-        self.weapon = weapon # Make a function that checks for weapon validity and returns the appropriate enum value, or raises an error if invalid.
+        self.weapon = weapon # Make a function that checks for weapon validity and returns the appropriate enum value. Raise an error if invalid.
         self.evasion = init_evasion_calc(rank)
         self.ammo = get_ammo(weapon)
 
     def shoot(self, target):
-        if self.ammo <= 0:
-            print(f"{self.name} is out of ammo and cannot shoot!")
-            return
+        shoot_dmg_calc(self, target)
+
     
