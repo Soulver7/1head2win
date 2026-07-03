@@ -1,4 +1,5 @@
-from weapons.weapons_enum import Weapons
+from weapons_enum import Weapons
+
 
 def get_ammo(weapon):
     match weapon:

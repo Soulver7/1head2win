@@ -1,0 +1,110 @@
+import random, time
+from weapons_enum import Weapons
+from misc_weapon_functions import *
+
+
+def alt_melee_action(self, target):
+    accuracy_pool = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+    match self.weapon:
+        case Weapons.DUAL_BLADES:
+            time.sleep(1)
+            self.melee_rep_count = 0
+            self.alt_stance = True
+            print(f"{self.name} assumes a defensive stance. Ready to deflect bullets!")
+        
+        case Weapons.RIOT_SHIELD:
+            time.sleep(1)
+            self.alt_stance = True
+            print(f"{self.name} assumes a defensive stance. Ready to block incoming damage!")
+        
+        case Weapons.SLEDGEHAMMER:
+            time.sleep(1)
+            if self.melee_rep_count == 0:
+                self.melee_rep_count += 1
+                print(f"{self.name} readies a big attack!")
+            elif self.melee_rep_count == 1:
+                self.melee_rep_count = 0
+                self.alt_stance = False
+                hit_chance = random.choice(accuracy_pool)
+                damage = 175
+                if hit_chance >= evasion_modifiers(target):
+                    target.health -= damage
+                    print(f"{self.name}'s hammer comes crashing down! {target.name} takes a tremendous {damage} damage, and is left with {zero_health_adjustment(target.health)} health remaining.")
+                else:
+                    print(f"{self.name} whiffs their big swing! {target.name} has gotta be whipping the sweat off their brow now.")
+        
+        case Weapons.SPEAR:
+            time.sleep(1)
+            self.alt_stance = True
+            self.melee_rep_count = 0
+            hit_chance = random.choice(accuracy_pool)
+            damage = 105
+            if hit_chance >= evasion_modifiers(target):
+                target.health -= damage
+                print(f"{self.name}'s dancing spear elegantly cleaves {target.name}! {target.name} takes a solid {damage} damage, and is left with {zero_health_adjustment(target.health)} health remaining.")
+            else:
+                print(f"Elegant movements doesn't automatically mean elegant accuracy. {target.name} dodges gracefully, and is left unscathed.")
+        
+        case Weapons.DAGGER:
+            time.sleep(1)
+            if self.melee_rep_count == 0:
+                self.melee_rep_count += 1
+                self.alt_stance = True
+            elif self.melee_rep_count == 1:
+                self.melee_rep_count = 0
+                self.alt_stance = False
+                hit_chance = random.choice(accuracy_pool)
+                if hit_chance >= 9 and hit_chance >= evasion_modifiers(target):
+                    damage = 320
+                    target.health -= damage
+                    print(f"{self.name} slips behind {target.name}, and delivers a devestating {damage} damage! {target.name} is left with {zero_health_adjustment(target.health)} health remaining.")
+                elif hit_chance >= evasion_modifiers(target):
+                    damage = 75
+                    target.health -= damage
+                    print(f"{self.name} stabs with conviction! {target.name} takes a solid {damage} damage, and is left with {zero_health_adjustment(target.health)} health remaining.")
+                else:
+                    print(f"{self.name} stabs forward with gusto, but seems to have been blinded with fervor. {target.name} side steps the attack with ease.")
+        
+        case Weapons.SWORD:
+            time.sleep(1)
+            if self.melee_rep_count == 0:
+                self.melee_rep_count += 1
+                self.alt_stance = True
+            elif self.melee_rep_count == 1:
+                self.melee_rep_count = 0
+                self.alt_stance = False
+                hit_chance = random.choice(accuracy_pool)
+                if hit_chance >= evasion_modifiers(target):
+                    damage = 120
+                    target.health -= damage
+                    print(f"{self.name} lunges forward! {target.name} takes a solid {damage} damage, and is left with {zero_health_adjustment(target.health)} health remaining.")
+                else:
+                    print(f"{self.name} flies right by their traget! {target.name} side steps the attack with ease.")
+        
+        case Weapons.THROWING_KNIVES:
+            time.sleep(1)
+            if self.melee_rep_count == 0:
+                self.melee_rep_count += 1
+                self.alt_stance = True
+            elif self.melee_rep_count == 1:
+                self.melee_rep_count = 0
+                self.alt_stance = False
+                hit_chance = random.choice(accuracy_pool)
+                if target.weapon == Weapons.RIOT_SHIELD or target.weapon == Weapons.DUAL_BLADES:
+                    if target.alt_stance:
+                        melee_defense_modifier(self, target, 140, hit_chance)
+                        return
+                if hit_chance >= 9 and hit_chance >= evasion_modifiers(target):
+                    damage = 210
+                    target.health -= damage
+                    print(f"{self.name} lands a bullseye! Both knives land right in {target.name}'s cranium, dealing a critical {damage} damage, and leaving them with {zero_health_adjustment(target.health)} health remaining.")
+                elif hit_chance >= evasion_modifiers(target):
+                    damage = 140
+                    target.health -= damage
+                    print(f"{self.name}'s swift throw finds their mark! {target.name} takes a respectable {damage} damage, and is left with {zero_health_adjustment(target.health)} health remaining.")
+                else:
+                    print(f"{self.name}'s prepared strike clinks sadly to the ground. {target.name} is left unharmed.")
+        
+        case _:
+            raise ValueError(f"That sure is an interesting way to use a gun, but we'll need a weapon that's classified as a melee weapon in The Finals.")
