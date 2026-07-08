@@ -1,8 +1,8 @@
 from weapons_enum import Weapons
 
 
-def get_ammo(weapon):
-    match weapon:
+def get_ammo(self) -> int:
+    match self.weapon:
         case Weapons.AKM:
             return 34
         case Weapons.CB_01_REPEATER:
@@ -42,7 +42,7 @@ def get_ammo(weapon):
         case Weapons.MGL32:
             return 6
         case Weapons.SA1216:
-            return 16
+            return 16 # Weird ammo count due to tube rotation logic. Going down to -3 is intentional, and is accounted for in other logic
         case Weapons.SHAK_50:
             return 20
         case Weapons._93R:
@@ -61,8 +61,6 @@ def get_ammo(weapon):
             return 2
         case Weapons.SR_84:
             return 6
-        case Weapons.THROWING_KNIVES:
-            return 1 # Infinite ammo, but I'll give it a "fake" ammo count of 1 for the sake of not having to reload
         case Weapons.V9S:
             return 20
         case Weapons.XP_54:

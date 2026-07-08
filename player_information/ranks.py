@@ -1,5 +1,5 @@
-from enum import Enum
 import random
+from enum import Enum
 
 
 class Ranks(Enum):
@@ -11,8 +11,8 @@ class Ranks(Enum):
     DIAMOND = 6
     RUBY = 7
 
-def get_rank_evasion_pool(rank):
-    match rank:
+def get_rank_evasion_pool(self) -> list:
+    match self.rank:
         case Ranks.UNRANKED:
             return [1, 2, 3, 4, 5, 6, 7, 8]
         case Ranks.BRONZE:
@@ -30,21 +30,21 @@ def get_rank_evasion_pool(rank):
         case _:
             raise ValueError("Invalid rank provided. Must be one of the defined Ranks enum values.")
         
-def init_evasion_calc(self, rank):
-    match rank:
+def init_evasion_calc(self) -> int:
+    match self.rank:
         case Ranks.UNRANKED:
-            self.evasion = random.choice(get_rank_evasion_pool(Ranks.UNRANKED))
+            return random.choice(get_rank_evasion_pool(self))
         case Ranks.BRONZE:
-            self.evasion = random.choice(get_rank_evasion_pool(Ranks.BRONZE))
+            return random.choice(get_rank_evasion_pool(self))
         case Ranks.SILVER:
-            self.evasion = random.choice(get_rank_evasion_pool(Ranks.SILVER))
+            return random.choice(get_rank_evasion_pool(self))
         case Ranks.GOLD:
-            self.evasion = random.choice(get_rank_evasion_pool(Ranks.GOLD))
+            return random.choice(get_rank_evasion_pool(self))
         case Ranks.PLATINUM:
-            self.evasion = random.choice(get_rank_evasion_pool(Ranks.PLATINUM))
+            return random.choice(get_rank_evasion_pool(self))
         case Ranks.DIAMOND:
-            self.evasion = random.choice(get_rank_evasion_pool(Ranks.DIAMOND))
+            return random.choice(get_rank_evasion_pool(self))
         case Ranks.RUBY:
-            self.evasion = random.choice(get_rank_evasion_pool(Ranks.RUBY))
+            return random.choice(get_rank_evasion_pool(self))
         case _:
             raise ValueError("Invalid rank provided. Must be one of the defined Ranks enum values.")

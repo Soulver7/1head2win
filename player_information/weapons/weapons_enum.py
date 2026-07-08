@@ -14,6 +14,7 @@ class Weapons(Enum):
     P90 = 9
     PIKE_556 = 10
     R_357 = 11
+
     # Heavy Ranged Weapons
     _50_AKIMBO = 12 # Had to adjust for enum naming constraints / .50 Akimbo
     BFR_TITAN = 13
@@ -25,6 +26,7 @@ class Weapons(Enum):
     MGL32 = 19
     SA1216 = 20
     SHAK_50 = 21 # Had to adjust for enum naming constraints / SHAK-50
+
     # Light Ranged Weapons
     _93R = 22 # Had to adjust for enum naming constraints / 93R
     ARN_220 = 23 # Had to adjust for enum naming constraints / ARN-220
@@ -36,12 +38,15 @@ class Weapons(Enum):
     SR_84 = 29 # Had to adjust for enum naming constraints / SR-84
     V9S = 30
     XP_54 = 31 # Had to adjust for enum naming constraints / XP-54
+
     # Medium Melee Weapons
     DUAL_BLADES = 32
     RIOT_SHIELD = 33
+
     # Heavy Melee Weapons
     SLEDGEHAMMER = 34
     SPEAR = 35
+    
     # Light Melee Weapons
     DAGGER = 36
     SWORD = 37
