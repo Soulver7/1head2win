@@ -1,6 +1,6 @@
 import random, time
-from weapons_enum import Weapons
-from misc_weapon_functions import zero_health_adjustment, evasion_modifiers, melee_defense_modifier
+from player_information.weapons.weapons_enum import Weapons
+from player_information.weapons.misc_weapon_functions import zero_health_adjustment, evasion_modifiers, melee_defense_modifier
 
 
 def alt_melee_action(self, target):
@@ -8,18 +8,18 @@ def alt_melee_action(self, target):
 
     match self.weapon:
         case Weapons.DUAL_BLADES:
-            time.sleep(1)
+            time.sleep(2)
             self.melee_rep_count = 0
             self.alt_stance = True
             print(f"{self.name} assumes a defensive stance. Ready to deflect bullets!")
         
         case Weapons.RIOT_SHIELD:
-            time.sleep(1)
+            time.sleep(2)
             self.alt_stance = True
             print(f"{self.name} assumes a defensive stance. Ready to block incoming damage!")
         
         case Weapons.SLEDGEHAMMER:
-            time.sleep(1)
+            time.sleep(2)
             
             if self.alt_stance:
                 self.alt_stance = False
@@ -38,7 +38,7 @@ def alt_melee_action(self, target):
                 print(f"{self.name} readies a big attack!")
         
         case Weapons.SPEAR:
-            time.sleep(1)
+            time.sleep(2)
             self.alt_stance = True
             self.melee_rep_count = 0
             hit_chance = random.choice(accuracy_pool)
@@ -52,13 +52,13 @@ def alt_melee_action(self, target):
                 print(f"Elegant movements doesn't automatically mean elegant accuracy. {target.name} dodges gracefully, and is left unscathed.")
         
         case Weapons.DAGGER:
-            time.sleep(1)
+            time.sleep(2)
 
             if self.alt_stance:
                 self.alt_stance = False
                 hit_chance = random.choice(accuracy_pool)
 
-                if hit_chance >= 9 and hit_chance >= evasion_modifiers(target):
+                if hit_chance >= 10 and hit_chance >= evasion_modifiers(target):
                     damage = 320
                     target.health -= damage
                     print(f"{self.name} slips behind {target.name}, and delivers a devestating {damage} damage! {target.name} is left with {zero_health_adjustment(target)} health remaining.")
@@ -76,7 +76,7 @@ def alt_melee_action(self, target):
                 print(f"{self.name} readies themself for a critical strike!")
         
         case Weapons.SWORD:
-            time.sleep(1)
+            time.sleep(2)
 
             if self.alt_stance:
                 self.alt_stance = False
@@ -95,7 +95,7 @@ def alt_melee_action(self, target):
                 print(f'{self.name} prepares a daring lunge!')
         
         case Weapons.THROWING_KNIVES:
-            time.sleep(1)
+            time.sleep(2)
 
             if self.alt_stance:
                 self.alt_stance = False
@@ -106,7 +106,7 @@ def alt_melee_action(self, target):
                         melee_defense_modifier(self, target, 140, hit_chance)
                         return
                     
-                if hit_chance >= 9 and hit_chance >= evasion_modifiers(target):
+                if hit_chance >= 10 and hit_chance >= evasion_modifiers(target):
                     damage = 210
                     target.health -= damage
                     print(f"{self.name} lands a bullseye! Both knives land right in {target.name}'s cranium, dealing a critical {damage} damage, and leaving them with {zero_health_adjustment(target)} health remaining.")

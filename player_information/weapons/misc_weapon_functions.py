@@ -1,15 +1,19 @@
 import time, random
-from weapons_enum import Weapons
+from player_information.weapons.weapons_enum import Weapons
+from player_information.weapons.ammo_mgmt import get_ammo
 
 
 def zero_health_adjustment(self) -> int:
-    return max(0, self.health)
+    if max(0, self.health) != self.health:
+        self.health = 0
+    
+    return self.health
 
-def alt_melee_stance_list() -> list:
+def melee_list() -> list:
     return [Weapons.DUAL_BLADES, Weapons.RIOT_SHIELD, Weapons.SLEDGEHAMMER, Weapons.SPEAR, Weapons.DAGGER, Weapons.SWORD, Weapons.THROWING_KNIVES]
 
 def evasion_modifiers(target) -> int:
-    if target.weapon not in alt_melee_stance_list():
+    if target.weapon not in melee_list():
         if target.tactical_reload_evasion_modifier:
             target.tactical_reload_evasion_modifier = False
             return target.evasion + 1
@@ -60,3 +64,9 @@ def melee_defense_modifier(self, target, base_damage: int, hit_chance: int) -> b
         else:
             print(f"{target.name} blocks the shot!")
             return False
+
+def max_ammo_adjustment(self, adding: int) -> int:
+    if max(get_ammo(self), self.ammo + adding) != get_ammo(self):
+        self.ammo = get_ammo(self)
+    
+    return self.ammo + adding

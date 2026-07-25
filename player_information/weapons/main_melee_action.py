@@ -1,6 +1,6 @@
 import random, time
-from weapons_enum import Weapons
-from misc_weapon_functions import zero_health_adjustment, evasion_modifiers, melee_defense_modifier
+from player_information.weapons.weapons_enum import Weapons
+from player_information.weapons.misc_weapon_functions import zero_health_adjustment, evasion_modifiers, melee_defense_modifier
 
 
 def main_melee_dmg_calc(self, target):
@@ -10,7 +10,7 @@ def main_melee_dmg_calc(self, target):
     match self.weapon:
         case Weapons.DUAL_BLADES:
             if self.alt_stance:
-                time.sleep(1)
+                time.sleep(2)
                 self.alt_stance = False
                 print(f'{self.name} drops their guard, and is now on the offensive!')
 
@@ -18,7 +18,7 @@ def main_melee_dmg_calc(self, target):
                 self.melee_rep_count += 1
 
                 for i in range(2):
-                    time.sleep(1)
+                    time.sleep(2)
                     hit_chance = random.choice(accuracy_pool)
                     damage = 50
 
@@ -33,7 +33,7 @@ def main_melee_dmg_calc(self, target):
                 self.melee_rep_count += 1
 
                 for i in range(2):
-                    time.sleep(1)
+                    time.sleep(2)
                     hit_chance = random.choice(accuracy_pool)
                     damage = 60
 
@@ -45,7 +45,7 @@ def main_melee_dmg_calc(self, target):
                         print(f"{self.name} swings and misses! {target.name} evades the attack with ease. (Swing {i} of 2)")
 
             if self.melee_rep_count == 2:
-                time.sleep(1)
+                time.sleep(2)
                 self.melee_rep_count = 0
                 hit_chance = random.choice(accuracy_pool)
                 damage = 100
@@ -59,11 +59,11 @@ def main_melee_dmg_calc(self, target):
         
         case Weapons.RIOT_SHIELD:
             if self.alt_stance:
-                time.sleep(1)
+                time.sleep(2)
                 self.alt_stance = False
                 print(f'{self.name} drops their guard, and is now on the offensive!')
 
-            time.sleep(1)
+            time.sleep(2)
             hit_chance = random.choice(accuracy_pool)
             damage = 90
 
@@ -76,11 +76,11 @@ def main_melee_dmg_calc(self, target):
         
         case Weapons.SLEDGEHAMMER:
             if self.alt_stance:
-                time.sleep(1)
+                time.sleep(2)
                 self.alt_stance = False
                 print(f"{self.name}'s wind up was a feint! Let's see how this attack lands.")
 
-            time.sleep(1)
+            time.sleep(2)
             hit_chance = random.choice(accuracy_pool)
             damage = 100
 
@@ -93,11 +93,11 @@ def main_melee_dmg_calc(self, target):
         
         case Weapons.SPEAR:
             if self.alt_stance:
-                time.sleep(1)
+                time.sleep(2)
                 self.alt_stance = False
                 print(f"{self.name}'s graceful dance has come to an end! Let's see how these longer ranged thrusts fair against {target.name}.")
 
-            time.sleep(1)
+            time.sleep(2)
             if self.melee_rep_count == 0:
                 self.melee_rep_count += 1
                 hit_chance = random.choice(accuracy_pool)
@@ -136,11 +136,11 @@ def main_melee_dmg_calc(self, target):
 
         case Weapons.DAGGER:
             if self.alt_stance:
-                time.sleep(1)
+                time.sleep(2)
                 self.alt_stance = False
                 print(f'{self.name} settles back into their usual stance.')
 
-            time.sleep(1)
+            time.sleep(2)
             hit_chance = random.choice(accuracy_pool)
             damage = 60
 
@@ -153,11 +153,11 @@ def main_melee_dmg_calc(self, target):
         
         case Weapons.SWORD:
             if self.alt_stance:
-                time.sleep(1)
+                time.sleep(2)
                 self.alt_stance = False
                 print(f'{self.name} decides against the lunge, and assumes a more traditional fighting stance again')
 
-            time.sleep(1)
+            time.sleep(2)
             hit_chance = random.choice(accuracy_pool)
             damage = 88
 
@@ -172,12 +172,12 @@ def main_melee_dmg_calc(self, target):
             self.melee_rep_count = 0
 
             if self.alt_stance:
-                time.sleep(1)
+                time.sleep(2)
                 self.alt_stance = False
                 print(f"{self.name} doesn't see a good opportunity, and holds the knives in a more traditional manner again.")
 
             for i in range(2):
-                time.sleep(1)
+                time.sleep(2)
                 hit_chance = random.choice(accuracy_pool)
 
                 if target.weapon == Weapons.RIOT_SHIELD or target.weapon == Weapons.DUAL_BLADES:
@@ -185,7 +185,7 @@ def main_melee_dmg_calc(self, target):
                         melee_defense_modifier(self, target, 60, hit_chance)
                         return
                     
-                if hit_chance >= 9 and hit_chance >= evasion_modifiers(target):
+                if hit_chance >= 10 and hit_chance >= evasion_modifiers(target):
                     damage = 90
                     target.health -= damage
                     print(f"{self.name} stuck them right in the head! {target.name} took a devestating {damage} damage, and is left with {zero_health_adjustment(target)} remaining. (Knife {i} of 2)")

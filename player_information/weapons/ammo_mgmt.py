@@ -1,4 +1,4 @@
-from weapons_enum import Weapons
+from player_information.weapons.weapons_enum import Weapons
 
 
 def get_ammo(self) -> int:

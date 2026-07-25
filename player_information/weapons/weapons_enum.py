@@ -6,14 +6,14 @@ class Weapons(Enum):
     AKM = 1
     CB_01_REPEATER = 2 # Had to adjust for enum naming constraints / CB-01 REPEATER
     CERBERUS_12GA = 3
-    CHIMERA_XB = 4
-    CL_40 = 5
+    CHIMERA_XB = 4 # Had to adjust for enum naming constraints / CHIMERA-XB
+    CL_40 = 5 # Had to adjust for enum naming constraints / CL-40
     FAMAS = 6
     FCAR = 7
     MODEL_1887 = 8
     P90 = 9
-    PIKE_556 = 10
-    R_357 = 11
+    PIKE_556 = 10 # Had to adjust for enum naming constraints / PIKE-556
+    R_357 = 11 # Had to adjust for enum naming constraints / R.357
 
     # Heavy Ranged Weapons
     _50_AKIMBO = 12 # Had to adjust for enum naming constraints / .50 Akimbo
