@@ -45,10 +45,10 @@ My first solo project, started to complete the "Personal Project 1" course for B
 - Objects
     - I feel this is the first time I've truly been able to work with objects at full comprehension of what everything was doing.
 - Inputs
-    - Learning how to implements inputs into functions was rather fun. It's surprisingly intuitive
+    - Learning how to implement inputs into functions was rather fun. It's surprisingly intuitive
     - Clamping. This is the first time I've had to be thorough with my inputs and outputs of functions and methods, due to people outside of myself being able to interact with my code.
 - Text formatting
-    - Formatting print text is suprisingly difficult. I got the hang of the time functions and spacing of lines by the end of this.
+    - Formatting print text is surprisingly difficult. I got the hang of the time functions and spacing of lines by the end of this.
 
 # Gameplay
 
@@ -105,7 +105,7 @@ def player1_rank_get(player1_name: str) -> int:
             print("The input must be a number.")
 ```
 
-Then that integer goes into a function used to turns it into an enum value.
+Then that integer goes into a function used to turn it into an enum value.
 
 ```py
 def get_rank_evasion_pool(self) -> list:

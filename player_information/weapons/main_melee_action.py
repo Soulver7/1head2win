@@ -95,7 +95,7 @@ def main_melee_dmg_calc(self, target):
             if self.alt_stance:
                 time.sleep(2)
                 self.alt_stance = False
-                print(f"{self.name}'s graceful dance has come to an end! Let's see how these longer ranged thrusts fair against {target.name}.")
+                print(f"{self.name}'s graceful dance has come to an end! Let's see how these longer ranged thrusts fare against {target.name}.")
 
             time.sleep(2)
             if self.melee_rep_count == 0:
@@ -188,7 +188,7 @@ def main_melee_dmg_calc(self, target):
                 if hit_chance >= 10 and hit_chance >= evasion_modifiers(target):
                     damage = 90
                     target.health -= damage
-                    print(f"{self.name} stuck them right in the head! {target.name} took a devestating {damage} damage, and is left with {zero_health_adjustment(target)} remaining. (Knife {i} of 2)")
+                    print(f"{self.name} stuck them right in the head! {target.name} took a devastating {damage} damage, and is left with {zero_health_adjustment(target)} remaining. (Knife {i} of 2)")
 
                 elif hit_chance >= evasion_modifiers(target):
                     damage = 60

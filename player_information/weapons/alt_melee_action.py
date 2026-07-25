@@ -61,7 +61,7 @@ def alt_melee_action(self, target):
                 if hit_chance >= 10 and hit_chance >= evasion_modifiers(target):
                     damage = 320
                     target.health -= damage
-                    print(f"{self.name} slips behind {target.name}, and delivers a devestating {damage} damage! {target.name} is left with {zero_health_adjustment(target)} health remaining.")
+                    print(f"{self.name} slips behind {target.name}, and delivers a devastating {damage} damage! {target.name} is left with {zero_health_adjustment(target)} health remaining.")
 
                 elif hit_chance >= evasion_modifiers(target):
                     damage = 75
@@ -88,7 +88,7 @@ def alt_melee_action(self, target):
                     print(f"{self.name} lunges forward! {target.name} takes a solid {damage} damage, and is left with {zero_health_adjustment(target)} health remaining.")
 
                 else:
-                    print(f"{self.name} flies right by their traget! {target.name} side steps the attack with ease.")
+                    print(f"{self.name} flies right by their target! {target.name} side steps the attack with ease.")
             
             else:
                 self.alt_stance = True

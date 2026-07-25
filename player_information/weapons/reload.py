@@ -105,7 +105,7 @@ def reload_action(self) -> bool:
                 time.sleep(2)
                 print(f"Reload complete! {self.name} reloads an additional slug, and is ready to fight again!")
                 time.sleep(2)
-                print("(You will recieve 2 slugs per reload until next action)")
+                print("(You will receive 2 slugs per reload until next action)")
                 return True
             
             elif max(self.ammo, get_ammo(self)-1) == self.ammo:

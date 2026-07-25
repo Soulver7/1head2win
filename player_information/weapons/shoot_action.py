@@ -490,7 +490,7 @@ def shoot_dmg_calc(self, target):
                 time.sleep(2)
                 burn_damage = burn_stacks * 7.5
                 target.health -= burn_damage
-                print(f'{target.name} has taken an additional {burn_damage} damage due to thier burns! {target.name} is now left with {zero_health_adjustment(target)} health remaining.')
+                print(f'{target.name} has taken an additional {burn_damage} damage due to their burns! {target.name} is now left with {zero_health_adjustment(target)} health remaining.')
 
             time.sleep(2)
             print(f'{self.name} has {self.ammo}/{get_ammo(self)} amount of gas left in the tank.')
