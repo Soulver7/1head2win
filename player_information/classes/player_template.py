@@ -3,6 +3,7 @@ from player_information.ranks import init_evasion_calc
 from player_information.enum_checks import is_valid_rank
 from player_information.weapons.shoot_action import shoot_dmg_calc
 from player_information.weapons.reload import reload_action
+from player_information.weapons.ammo_mgmt import get_ammo
 from player_information.weapons.main_melee_action import main_melee_dmg_calc
 from player_information.weapons.alt_melee_action import alt_melee_action
 from player_information.weapons.misc_weapon_functions import zero_health_adjustment, evasion_modifiers, melee_list
@@ -46,9 +47,13 @@ class Ranged_Player: # Template for ranged player classes
         else:
             print(f"{self.name} attempts a quick strike, but {target.name} dodges out of the way!")
     
-    def action_list(self): # Handles the printing of actions at time of input selection
-        return ["Shoot", "Reload", "Quick Melee"]
-    
+    def action_list(self) -> list: # Handles the printing of actions at time of input selection
+        if self.ammo == get_ammo(self):
+            return ["Shoot", "Quick Melee"]
+
+        else:
+            return ["Shoot", "Quick Melee", "Reload"]
+        
     def __repr__(self) -> str:
         return f"Ranged_Player(name={self.name}, rank={self.rank}, evasion={self.evasion}, tatical_reload_evasion_modifier={self.tactical_reload_evasion_modifier}, is_faster={self.is_faster}, rounds_won={self.rounds_won})"
 

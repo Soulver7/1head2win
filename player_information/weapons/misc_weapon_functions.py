@@ -34,17 +34,18 @@ def melee_defense_modifier(self, target, base_damage: int, hit_chance: int) -> b
     if target.weapon == Weapons.DUAL_BLADES:
         if hit_chance >= evasion_modifiers(target):
             deflect_hit_chance = random.choice(accuracy_pool)
-            target.health -= base_damage / 10
 
             if deflect_hit_chance >= evasion_modifiers(self):
+                target.health -= base_damage // 10
                 self.health -= base_damage
                 print(f"{self.name} has their shot deflected back at them! {self.name} takes {base_damage} damage, and is left with {zero_health_adjustment(self)} health remaining.")
                 time.sleep(2)
-                print(f"{target.name} still takes some recoil damage from the deflection! {target.name} took {base_damage / 10} damage, and is left with {zero_health_adjustment(target)} health remaining.")
+                print(f"{target.name} still takes some recoil damage from the deflection! {target.name} took {base_damage // 10} damage, and is left with {zero_health_adjustment(target)} health remaining.")
                 return True
             
             else:
-                print(f"{target.name} deflects the shot, but narrowly misses the trajectory! {target.name} takes {base_damage / 10} damage from the recoil, and is left with {zero_health_adjustment(target)} health remaining.")
+                target.health -= base_damage
+                print(f"{target.name} barely deflects the shot, but narrowly misses the trajectory! {target.name} takes {base_damage} damage, and is left with {zero_health_adjustment(target)} health remaining.")
                 return True
             
         else:

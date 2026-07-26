@@ -33,11 +33,18 @@ def action_int_check(player) -> int:
     while True:
         try:
             action_int = int(input(f"{player.name}'s turn: "))
+
             if player.weapon not in melee_list():
-                if min(max(1, action_int), 3) != action_int:
-                    time.sleep(2)
-                    print("\nThe number must be between 1 and 3.")
-                    continue
+                if player.ammo == get_ammo(player):
+                    if min(max(1, action_int), 2) != action_int:
+                        time.sleep(2)
+                        print("\nThe number must be between 1 and 2.")
+                        continue
+                else:
+                    if min(max(1, action_int), 3) != action_int:
+                        time.sleep(2)
+                        print("\nThe number must be between 1 and 3.")
+                        continue
             
             else:
                 if player.in_melee_range:
@@ -58,50 +65,44 @@ def action_int_check(player) -> int:
             print("\nThe input must be a number.")
 
 def take_action(player, action_int, target):
-    invalid = True
+    if player.weapon not in melee_list():
+        if action_int == 1:
+            player.shoot(target)
+        
+        elif action_int == 2:
+            player.quick_melee(target)
 
-    while invalid:
-        if player.weapon not in melee_list():
+        elif action_int == 3:
+            player.reload()
+            
+    else:
+        if player.in_melee_range:
             if action_int == 1:
-                player.shoot(target)
-                invalid = False
-        
+                player.main_melee(target)
+            
             elif action_int == 2:
-                if player.reload():
-                    continue
-
-                else:
-                    invalid = False
-        
+                player.alt_melee(target)
+            
             elif action_int == 3:
                 player.quick_melee(target)
-                invalid = False
-    
-        else:
-            if player.in_melee_range:
-                if action_int == 1:
-                    player.main_melee(target)
-                    invalid = False
-            
-                elif action_int == 2:
-                    player.alt_melee(target)
-                    invalid = False
-            
-                elif action_int == 3:
-                    player.quick_melee(target)
-                    invalid = False
         
-            else:
-                if action_int == 1:
-                    if player.move_in(target):
-                        continue
+        else:
+            if action_int == 1:
+                if player.move_in(target):
+                    player.in_melee_range = True
+                    time.sleep(2)
+                    print("\n====================")
 
-                    else:
-                        invalid = False
+                    for i, ability in enumerate(player.action_list()):
+                                print(f"{ability} = {i+1}")
+
+                    print("====================\n")
+                    new_action_int = action_int_check(player)
+                    print("")
+                    take_action(player, new_action_int, target)
             
-                elif action_int == 2:
-                    player.quick_melee(target)
-                    invalid = False
+            elif action_int == 2:
+                player.quick_melee(target)
 
 def reset_player(self):
     if self.id == 1:
@@ -146,7 +147,7 @@ def round_logic(first_player, second_player):
         for i, ability in enumerate(first_player.action_list()):
             print(f"{ability} = {i+1}")
             
-        print("=====================\n")
+        print("====================\n")
         action_int = action_int_check(first_player)
         print("")
         take_action(first_player, action_int, second_player)

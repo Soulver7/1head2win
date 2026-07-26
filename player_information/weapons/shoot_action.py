@@ -6,7 +6,6 @@ from player_information.weapons.misc_weapon_functions import zero_health_adjustm
     
 def shoot_dmg_calc(self, target):
     accuracy_pool = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    self.tactical_reload_evasion_modifier = False
 
     match self.weapon:
         case Weapons.AKM:
