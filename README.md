@@ -656,7 +656,7 @@ git clone https://github.com/Soulver7/1head2win.git
 3. Change your directory to "1head2win":
 
 ```
-cd 1Head2Win
+cd 1head2win
 ```
 
 4. Run the code using main.py:
