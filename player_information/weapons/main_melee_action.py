@@ -41,7 +41,7 @@ def main_melee_dmg_calc(self, target):
                         print(f"{self.name} slashes {target.name} for a solid {damage} damage! {target.name} has {zero_health_adjustment(target)} health remaining. (Swing {i+1} of 2)")
 
                     else:
-                        print(f"{self.name} swings and misses! {target.name} evades the attack with ease. (Swing {i} of 2)")
+                        print(f"{self.name} swings and misses! {target.name} evades the attack with ease. (Swing {i+1} of 2)")
 
             elif self.melee_rep_count == 2:
                 time.sleep(2)
@@ -193,7 +193,7 @@ def main_melee_dmg_calc(self, target):
                     print(f"{self.name}'s knife strikes true! {target.name} took {damage} damage, and is left with {zero_health_adjustment(target)} health remaining. (Knife {i+1} of 2)")
                     
                 else:
-                    print(f"{self.name}'s knife whiffs! {target.name} remains unharmed. (Knife {i} of 2)")
+                    print(f"{self.name}'s knife whiffs! {target.name} remains unharmed. (Knife {i+1} of 2)")
         
         case _:
             raise ValueError(f"That sure is an interesting way to use a gun, but we'll need a weapon that's classified as a melee weapon in The Finals.")
