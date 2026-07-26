@@ -650,10 +650,10 @@ answer_int = replay_prompt(player1, player2)
 2. Clone the repository to your local machine:
 
 ```
-git clone https://github.com/Soulver7/1Head2Win.git
+git clone https://github.com/Soulver7/1head2win.git
 ```
 
-3. Change your directory to "1Head2Win":
+3. Change your directory to "1head2win":
 
 ```
 cd 1Head2Win
